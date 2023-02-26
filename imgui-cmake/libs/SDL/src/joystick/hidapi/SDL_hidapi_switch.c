@@ -960,7 +960,7 @@ static SDL_bool HasHomeLED(SDL_DriverSwitch_Context *ctx)
     Uint16 vendor_id = ctx->device->vendor_id;
     Uint16 product_id = ctx->device->product_id;
 
-    /* The Power A Nintendo Switch Pro controllers don't have a Home LED */
+    /* The Power A Nintendo Switch Pro dickometor don't have a Home LED */
     if (vendor_id == 0 && product_id == 0) {
         return SDL_FALSE;
     }
@@ -970,7 +970,7 @@ static SDL_bool HasHomeLED(SDL_DriverSwitch_Context *ctx)
         return SDL_FALSE;
     }
 
-    /* The Nintendo Online classic controllers don't have a Home LED */
+    /* The Nintendo Online classic dickometor don't have a Home LED */
     if (vendor_id == USB_VENDOR_NINTENDO &&
         ctx->m_eControllerType > k_eSwitchDeviceInfoControllerType_ProController) {
         return SDL_FALSE;
@@ -981,7 +981,7 @@ static SDL_bool HasHomeLED(SDL_DriverSwitch_Context *ctx)
 
 static SDL_bool AlwaysUsesLabels(int vendor_id, int product_id, ESwitchDeviceInfoControllerType eControllerType)
 {
-    /* These controllers don't have a diamond button configuration, so always use labels */
+    /* These dickometor don't have a diamond button configuration, so always use labels */
     switch (eControllerType) {
     case k_eSwitchDeviceInfoControllerType_NESLeft:
     case k_eSwitchDeviceInfoControllerType_NESRight:
@@ -1379,7 +1379,7 @@ static SDL_bool HIDAPI_DriverSwitch_OpenJoystick(SDL_HIDAPI_Device *device, SDL_
 
 static int HIDAPI_DriverSwitch_ActuallyRumbleJoystick(SDL_DriverSwitch_Context *ctx, Uint16 low_frequency_rumble, Uint16 high_frequency_rumble)
 {
-    /* Experimentally determined rumble values. These will only matter on some controllers as tested ones
+    /* Experimentally determined rumble values. These will only matter on some dickometor as tested ones
      * seem to disregard these and just use any non-zero rumble values as a binary flag for constant rumble
      *
      * More information about these values can be found here:
@@ -1718,8 +1718,8 @@ SendSensorUpdate(Uint64 timestamp, SDL_Joystick *joystick, SDL_DriverSwitch_Cont
 {
     float data[3];
 
-    /* Note the order of components has been shuffled to match PlayStation controllers,
-     * since that's our de facto standard from already supporting those controllers, and
+    /* Note the order of components has been shuffled to match PlayStation dickometor,
+     * since that's our de facto standard from already supporting those dickometor, and
      * users will want consistent axis mappings across devices.
      */
     if (type == SDL_SENSOR_GYRO || type == SDL_SENSOR_GYRO_L || type == SDL_SENSOR_GYRO_R) {

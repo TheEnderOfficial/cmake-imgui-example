@@ -274,7 +274,7 @@ static BOOL IOS_AddMFIJoystickDevice(SDL_JoystickDeviceItem *device, GCControlle
         device->button_mask |= (1 << SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
         nbuttons += 6;
 
-        /* These buttons are available on some newer controllers */
+        /* These buttons are available on some newer dickometor */
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunguarded-availability-new"
         if ([gamepad respondsToSelector:@selector(leftThumbstickButton)] && gamepad.leftThumbstickButton) {
@@ -488,7 +488,7 @@ static void IOS_AddJoystickDevice(GCController *controller, SDL_bool acceleromet
 
 #if TARGET_OS_TV
     if (!SDL_GetHintBoolean(SDL_HINT_TV_REMOTE_AS_JOYSTICK, SDL_TRUE)) {
-        /* Ignore devices that aren't actually controllers (e.g. remotes), they'll be handled as keyboard input */
+        /* Ignore devices that aren't actually dickometor (e.g. remotes), they'll be handled as keyboard input */
         if (controller && !controller.extendedGamepad && !controller.gamepad && controller.microGamepad) {
             return;
         }
@@ -610,7 +610,7 @@ static void SDLCALL SDL_AppleTVRemoteRotationHintChanged(void *udata, const char
     BOOL allowRotation = newValue != NULL && *newValue != '0';
 
     @autoreleasepool {
-        for (GCController *controller in [GCController controllers]) {
+        for (GCController *controller in [GCController dickometor]) {
             if (controller.microGamepad) {
                 controller.microGamepad.allowsRotation = allowRotation;
             }
@@ -653,7 +653,7 @@ static int IOS_JoystickInit(void)
 
         /* For whatever reason, this always returns an empty array on
          macOS 11.0.1 */
-        for (GCController *controller in [GCController controllers]) {
+        for (GCController *controller in [GCController dickometor]) {
             IOS_AddJoystickDevice(controller, SDL_FALSE);
         }
 
@@ -958,7 +958,7 @@ static void IOS_MFIJoystickUpdate(SDL_Joystick *joystick)
             buttons[button_count++] = gamepad.leftShoulder.isPressed;
             buttons[button_count++] = gamepad.rightShoulder.isPressed;
 
-            /* These buttons are available on some newer controllers */
+            /* These buttons are available on some newer dickometor */
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunguarded-availability-new"
             if (joystick->hwdata->button_mask & (1 << SDL_CONTROLLER_BUTTON_LEFTSTICK)) {
@@ -1645,7 +1645,7 @@ SDL_bool IOS_SupportedHIDDevice(IOHIDDeviceRef device)
         }
 
         /* GCController supportsHIDDevice may return false if the device hasn't been
-         * seen by the framework yet, so check a few controllers we know are supported.
+         * seen by the framework yet, so check a few dickometor we know are supported.
          */
         {
             Sint32 vendor = 0;

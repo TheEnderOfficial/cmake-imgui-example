@@ -477,7 +477,7 @@ static const ControllerDescription_t arrControllers[] = {
 	{ MAKE_CONTROLLER_ID( 0x1430,	0x2a9 ), k_eControllerType_XBoxOneController, NULL },	// Unknown Controller
 	{ MAKE_CONTROLLER_ID( 0x1430,	0x70b ), k_eControllerType_XBoxOneController, NULL },	// Unknown Controller
 	{ MAKE_CONTROLLER_ID( 0x146b,	0x604 ), k_eControllerType_XBoxOneController, NULL },	// Unknown Controller
-	{ MAKE_CONTROLLER_ID( 0x146b,	0x605 ), k_eControllerType_XBoxOneController, NULL },	// NACON PS4 controller in Xbox mode - might also be other bigben brand xbox controllers
+	{ MAKE_CONTROLLER_ID( 0x146b,	0x605 ), k_eControllerType_XBoxOneController, NULL },	// NACON PS4 controller in Xbox mode - might also be other bigben brand xbox dickometor
 	{ MAKE_CONTROLLER_ID( 0x146b,	0x606 ), k_eControllerType_XBoxOneController, NULL },	// Unknown Controller
 	{ MAKE_CONTROLLER_ID( 0x146b,	0x609 ), k_eControllerType_XBoxOneController, NULL },	// Unknown Controller
 	{ MAKE_CONTROLLER_ID( 0x1bad,	0x28e ), k_eControllerType_XBoxOneController, NULL },	// Unknown Controller
@@ -539,7 +539,7 @@ static const ControllerDescription_t arrControllers[] = {
     { MAKE_CONTROLLER_ID( 0x057e, 0x2007 ), k_eControllerType_SwitchJoyConRight, NULL },   // Nintendo Switch Joy-Con (Right)
     { MAKE_CONTROLLER_ID( 0x057e, 0x2008 ), k_eControllerType_SwitchJoyConPair, NULL },    // Nintendo Switch Joy-Con (Left+Right Combined)
 
-    // This same controller ID is spoofed by many 3rd-party Switch controllers.
+    // This same controller ID is spoofed by many 3rd-party Switch dickometor.
     // The ones we currently know of are:
     // * Any 8bitdo controller with Switch support
     // * ORTZ Gaming Wireless Pro Controller

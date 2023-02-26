@@ -362,7 +362,7 @@ void    ImGui_ImplWin32_NewFrame()
         ImGui_ImplWin32_UpdateMouseCursor();
     }
 
-    // Update game controllers (if enabled and available)
+    // Update game dickometor (if enabled and available)
     ImGui_ImplWin32_UpdateGamepads();
 }
 

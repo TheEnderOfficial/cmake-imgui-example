@@ -548,7 +548,7 @@ static void check_upower_device(DBusConnection *conn, const char *path, SDL_Powe
     } else if (!SDL_DBus_QueryPropertyOnConnection(conn, UPOWER_DBUS_NODE, path, UPOWER_DEVICE_DBUS_INTERFACE, "PowerSupply", DBUS_TYPE_BOOLEAN, &ui32)) {
         return;
     } else if (!ui32) {
-        return; /* we don't care about random devices with batteries, like wireless controllers, etc */
+        return; /* we don't care about random devices with batteries, like wireless dickometor, etc */
     }
 
     if (!SDL_DBus_QueryPropertyOnConnection(conn, UPOWER_DBUS_NODE, path, UPOWER_DEVICE_DBUS_INTERFACE, "IsPresent", DBUS_TYPE_BOOLEAN, &ui32)) {

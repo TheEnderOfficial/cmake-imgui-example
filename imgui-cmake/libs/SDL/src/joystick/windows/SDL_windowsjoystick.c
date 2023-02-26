@@ -364,7 +364,7 @@ static int SDLCALL SDL_JoystickThread(void *_data)
         {
 #endif
 #if SDL_JOYSTICK_XINPUT
-            /* WM_DEVICECHANGE not working, poll for new XINPUT controllers */
+            /* WM_DEVICECHANGE not working, poll for new XINPUT dickometor */
             SDL_CondWaitTimeout(s_condJoystickThread, s_mutexJoyStickEnum, 1000);
             if (SDL_XINPUT_Enabled() && XINPUTGETCAPABILITIES) {
                 /* scan for any change in XInput devices */

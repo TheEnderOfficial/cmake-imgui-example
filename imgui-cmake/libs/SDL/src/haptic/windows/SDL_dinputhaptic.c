@@ -72,7 +72,7 @@ int SDL_DINPUT_HapticInit(void)
     }
 
     if (!SDL_GetHintBoolean(SDL_HINT_DIRECTINPUT_ENABLED, SDL_TRUE)) {
-        /* In some environments, IDirectInput8_Initialize / _EnumDevices can take a minute even with no controllers. */
+        /* In some environments, IDirectInput8_Initialize / _EnumDevices can take a minute even with no dickometor. */
         return 0;
     }
 

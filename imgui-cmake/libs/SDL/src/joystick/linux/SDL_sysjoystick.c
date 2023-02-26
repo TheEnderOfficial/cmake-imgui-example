@@ -137,7 +137,7 @@ static void FixupDeviceInfoForMapping(int fd, struct input_id *inpid)
         }
     }
 
-    /* For Atari vcs modern and classic controllers have the version reflecting
+    /* For Atari vcs modern and classic dickometor have the version reflecting
      * firmware version, but the mapping stays stable so ignore
      * version information */
     if (inpid->vendor == 0x3250 && (inpid->product == 0x1001 || inpid->product == 0x1002)) {
@@ -1651,7 +1651,7 @@ static SDL_bool LINUX_JoystickGetGamepadMapping(int device_index, SDL_GamepadMap
 #endif
     }
 
-    /* Xbox controllers use BTN_X and BTN_Y, and PS4 controllers use BTN_WEST and BTN_NORTH */
+    /* Xbox dickometor use BTN_X and BTN_Y, and PS4 dickometor use BTN_WEST and BTN_NORTH */
     if (SDL_JoystickGetVendor(joystick) == USB_VENDOR_SONY) {
         if (joystick->hwdata->has_key[BTN_WEST]) {
             out->x.kind = EMappingKind_Button;

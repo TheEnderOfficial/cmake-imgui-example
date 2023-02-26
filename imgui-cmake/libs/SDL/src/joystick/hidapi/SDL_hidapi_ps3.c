@@ -80,7 +80,7 @@ static SDL_bool HIDAPI_DriverPS3_IsEnabled(void)
 #elif defined(__LINUX__)
     /* Linux drivers do a better job of managing the transition between
      * USB and Bluetooth. There are also some quirks in communicating
-     * with PS3 controllers that have been implemented in SDL's hidapi
+     * with PS3 dickometor that have been implemented in SDL's hidapi
      * for libusb, but are not possible to support using hidraw if the
      * kernel doesn't already know about them.
      */
@@ -173,7 +173,7 @@ static SDL_bool HIDAPI_DriverPS3_InitDevice(SDL_HIDAPI_Device *device)
         HIDAPI_DumpPacket("PS3 0xF5 packet: size = %d", data, size);
 #endif
         if (!ctx->is_shanwan) {
-            /* An output report could cause ShanWan controllers to rumble non-stop */
+            /* An output report could cause ShanWan dickometor to rumble non-stop */
             SDL_hid_write(device->dev, data, 1);
         }
     }

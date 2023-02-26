@@ -3,9 +3,10 @@
 //
 
 #include "imgui.h"
-#include "ui.h"
-#include "config.h"
-#include "../utils/utils.h"
+#include "../../inc/app/ui.h"
+#include "../../inc/app/config.h"
+#include "../../inc/services/RandomService.h"
+#include "../../inc/services/ApiService.h"
 
 
 namespace MyApp {
@@ -14,13 +15,37 @@ namespace MyApp {
         char error[128] = "";
         int user_dick;
         bool is_user_calculated = false;
+        char status[64];
+        char version[64];
+        bool isStatusLoaded = false;
     } state;
 
     void renderUI() {
+        if (!state.isStatusLoaded) {
+            auto r = ApiService::ApiService::get(MyApp::config.GET_STATUS_URL);
+            strcpy(state.status, r.jsonData["status"].asCString());
+            strcpy(state.version, r.jsonData["version"].asCString());
+            printf("Loaded data, status: %s, version: %s", state.status, state.version);
+
+            state.isStatusLoaded = true;
+        }
+
         ImGui::Begin("dickometor", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove);
 
         ImGui::SetWindowSize(ImVec2((float)MyApp::config.width, (float)MyApp::config.height));
         ImGui::SetWindowPos(ImVec2(0, 0));
+
+        ImGui::Text("You are using:");
+        ImGui::Text("Dickometor Client %s", MyApp::config.version);
+        ImGui::Text("Dickometor Server %s", state.version);
+        ImGui::Separator();
+
+        if (strcmp(MyApp::config.version, state.version) != 0) {
+            ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255,255,0,255));
+            ImGui::Text("Warning: version of client and server not equal, please update");
+            ImGui::PopStyleColor(1);
+            ImGui::Separator();
+        }
 
         if (strlen(state.error) > 0) {
             ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255,0,0,255));
@@ -28,6 +53,7 @@ namespace MyApp {
             ImGui::PopStyleColor(1);
             ImGui::Separator();
         }
+
 
         ImGui::Text("Enter your name!");
         ImGui::InputText("Your name", state.user_name, 64);
@@ -46,8 +72,9 @@ namespace MyApp {
                     strcpy(state.error, "Please enter name");
                 }
                 else {
-                    state.user_dick = AppUtils::randRange(5, 20);
+                    state.user_dick = RandomService::RandomService::randInt(2, 20);
                     state.is_user_calculated = true;
+
                 }
             }
 

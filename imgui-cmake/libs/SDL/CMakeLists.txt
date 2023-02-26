@@ -180,7 +180,7 @@ else()
   set(SDL_CLOCK_GETTIME_ENABLED_BY_DEFAULT OFF)
 endif()
 
-# The hidraw support doesn't catch Xbox, PS4 and Nintendo controllers,
+# The hidraw support doesn't catch Xbox, PS4 and Nintendo dickometor,
 #  so we'll just use libusb when it's available. libusb does not support iOS,
 #  so we default to yes on iOS.
 #  TODO: Windows can support libusb, the hid.c file just depends on Unix APIs

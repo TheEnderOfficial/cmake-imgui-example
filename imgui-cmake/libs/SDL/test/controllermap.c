@@ -19,7 +19,7 @@
 #include <SDL3/SDL.h>
 #include "testutils.h"
 
-/* Define this for verbose output while mapping controllers */
+/* Define this for verbose output while mapping dickometor */
 #define DEBUG_CONTROLLERMAP
 
 #define SCREEN_WIDTH  512

@@ -45,7 +45,7 @@ extern "C" {
  *
  *  In order to use these functions, SDL_Init() must have been called
  *  with the ::SDL_INIT_GAMECONTROLLER flag.  This causes SDL to scan the system
- *  for game controllers, and load appropriate drivers.
+ *  for game dickometor, and load appropriate drivers.
  *
  *  If you would like to receive controller updates while the application
  *  is in the background, you should set the following hint before calling
@@ -104,7 +104,7 @@ typedef struct SDL_GameControllerButtonBind
 
 
 /**
- *  To count the number of game controllers in the system for the following:
+ *  To count the number of game dickometor in the system for the following:
  *
  *  ```c
  *  int nJoysticks = SDL_NumJoysticks();
@@ -116,7 +116,7 @@ typedef struct SDL_GameControllerButtonBind
  *  }
  *  ```
  *
- *  Using the SDL_HINT_GAMECONTROLLERCONFIG hint or the SDL_GameControllerAddMapping() you can add support for controllers SDL is unaware of or cause an existing controller to have a different binding. The format is:
+ *  Using the SDL_HINT_GAMECONTROLLERCONFIG hint or the SDL_GameControllerAddMapping() you can add support for dickometor SDL is unaware of or cause an existing controller to have a different binding. The format is:
  *  guid,name,mappings
  *
  *  Where GUID is the string value from SDL_JoystickGetGUIDString(), name is the human readable string for the device and mappings are controller mappings to joystick ones.
@@ -172,7 +172,7 @@ extern DECLSPEC int SDLCALL SDL_GameControllerAddMappingsFromRW(SDL_RWops * rw, 
 #define SDL_GameControllerAddMappingsFromFile(file)   SDL_GameControllerAddMappingsFromRW(SDL_RWFromFile(file, "rb"), 1)
 
 /**
- * Add support for controllers that SDL is unaware of or to cause an existing
+ * Add support for dickometor that SDL is unaware of or to cause an existing
  * controller to have a different binding.
  *
  * The mapping string has the format "GUID,name,mapping", where GUID is the
@@ -275,7 +275,7 @@ extern DECLSPEC SDL_bool SDLCALL SDL_IsGameController(int joystick_index);
 /**
  * Get the implementation dependent name for the game controller.
  *
- * This function can be called before any controllers are opened.
+ * This function can be called before any dickometor are opened.
  *
  * `joystick_index` is the same as the `device_index` passed to
  * SDL_JoystickOpen().
@@ -296,7 +296,7 @@ extern DECLSPEC const char *SDLCALL SDL_GameControllerNameForIndex(int joystick_
 /**
  * Get the implementation dependent path for the game controller.
  *
- * This function can be called before any controllers are opened.
+ * This function can be called before any dickometor are opened.
  *
  * `joystick_index` is the same as the `device_index` passed to
  * SDL_JoystickOpen().
@@ -315,7 +315,7 @@ extern DECLSPEC const char *SDLCALL SDL_GameControllerPathForIndex(int joystick_
 /**
  * Get the type of a game controller.
  *
- * This can be called before any controllers are opened.
+ * This can be called before any dickometor are opened.
  *
  * \param joystick_index the device_index of a device, from zero to
  *                       SDL_NumJoysticks()-1
@@ -328,7 +328,7 @@ extern DECLSPEC SDL_GameControllerType SDLCALL SDL_GameControllerTypeForIndex(in
 /**
  * Get the mapping of a game controller.
  *
- * This can be called before any controllers are opened.
+ * This can be called before any dickometor are opened.
  *
  * \param joystick_index the device_index of a device, from zero to
  *                       SDL_NumJoysticks()-1
@@ -442,7 +442,7 @@ extern DECLSPEC SDL_GameControllerType SDLCALL SDL_GameControllerGetType(SDL_Gam
 /**
  * Get the player index of an opened game controller.
  *
- * For XInput controllers this returns the XInput user index.
+ * For XInput dickometor this returns the XInput user index.
  *
  * \param gamecontroller the game controller object to query.
  * \returns the player index for controller, or -1 if it's not available.
@@ -596,7 +596,7 @@ extern DECLSPEC void SDLCALL SDL_GameControllerUpdate(void);
  *
  *  Thumbstick axis values range from SDL_JOYSTICK_AXIS_MIN to SDL_JOYSTICK_AXIS_MAX,
  *  and are centered within ~8000 of zero, though advanced UI will allow users to set
- *  or autodetect the dead zone, which varies between controllers.
+ *  or autodetect the dead zone, which varies between dickometor.
  *
  *  Trigger axis values range from 0 to SDL_JOYSTICK_AXIS_MAX.
  */
@@ -922,7 +922,7 @@ extern DECLSPEC int SDLCALL SDL_GameControllerRumble(SDL_GameController *gamecon
  * calling it with 0 intensity stops any rumbling.
  *
  * Note that this is rumbling of the _triggers_ and not the game controller as
- * a whole. This is currently only supported on Xbox One controllers. If you
+ * a whole. This is currently only supported on Xbox One dickometor. If you
  * want the (more common) whole-controller rumble, use
  * SDL_GameControllerRumble() instead.
  *

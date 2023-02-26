@@ -308,7 +308,7 @@ int Android_AddJoystick(int device_id, const char *name, const char *desc, int v
     SDL_LockJoysticks();
 
     if (!SDL_GetHintBoolean(SDL_HINT_TV_REMOTE_AS_JOYSTICK, SDL_TRUE)) {
-        /* Ignore devices that aren't actually controllers (e.g. remotes), they'll be handled as keyboard input */
+        /* Ignore devices that aren't actually dickometor (e.g. remotes), they'll be handled as keyboard input */
         if (naxes < 2 && nhats < 1) {
             goto done;
         }

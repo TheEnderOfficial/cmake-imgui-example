@@ -509,7 +509,7 @@ static void UpdatePowerLevelWiiU(SDL_Joystick *joystick, Uint8 extensionBatteryB
     SDL_bool pluggedIn = extensionBatteryByte & 0x04 ? SDL_FALSE : SDL_TRUE;
     Uint8 batteryLevel = extensionBatteryByte >> 4;
 
-    /* Not sure if all Wii U Pro controllers act like this, but on mine
+    /* Not sure if all Wii U Pro dickometor act like this, but on mine
      * 4, 3, and 2 are held for about 20 hours each
      * 1 is held for about 6 hours
      * 0 is held for about 2 hours

@@ -46,7 +46,7 @@ extern "C" {
  *
  * GUIDs are as precise as possible but are not guaranteed to
  *   distinguish physically distinct but equivalent devices.  For
- *   example, two game controllers from the same vendor with the same
+ *   example, two game dickometor from the same vendor with the same
  *   product ID and revision may have the same GUID.
  *
  * GUIDs may be platform-dependent (i.e., the same device may report

@@ -432,7 +432,7 @@ static int HIDAPI_DriverGameCube_RumbleJoystick(SDL_HIDAPI_Device *device, SDL_J
     for (i = 0; i < MAX_CONTROLLERS; i += 1) {
         if (joystick->instance_id == ctx->joysticks[i]) {
             if (ctx->wireless[i]) {
-                return SDL_SetError("Nintendo GameCube WaveBird controllers do not support rumble");
+                return SDL_SetError("Nintendo GameCube WaveBird dickometor do not support rumble");
             }
             if (!ctx->rumbleAllowed[i]) {
                 return SDL_SetError("Second USB cable for WUP-028 not connected");

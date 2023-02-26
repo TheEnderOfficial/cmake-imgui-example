@@ -39,7 +39,7 @@ static SceCtrlData pad1 = { .lx = 0, .ly = 0, .rx = 0, .ry = 0, .lt = 0, .rt = 0
 static SceCtrlData pad2 = { .lx = 0, .ly = 0, .rx = 0, .ry = 0, .lt = 0, .rt = 0, .buttons = 0 };
 static SceCtrlData pad3 = { .lx = 0, .ly = 0, .rx = 0, .ry = 0, .lt = 0, .rt = 0, .buttons = 0 };
 
-static int ext_port_map[4] = { 1, 2, 3, 4 }; // index: SDL joy number, entry: Vita port number. For external controllers
+static int ext_port_map[4] = { 1, 2, 3, 4 }; // index: SDL joy number, entry: Vita port number. For external dickometor
 
 static int SDL_numjoysticks = 1;
 
@@ -125,7 +125,7 @@ int VITA_JoystickInit(void)
 
     SDL_numjoysticks = 1;
     SDL_PrivateJoystickAdded(0);
-    // How many additional paired controllers are there?
+    // How many additional paired dickometor are there?
     sceCtrlGetControllerPortInfo(&myPortInfo);
 
     // On Vita TV, port 0 and 1 are the same controller

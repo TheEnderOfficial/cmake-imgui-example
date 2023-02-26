@@ -736,11 +736,11 @@ static int should_enumerate_interface(unsigned short vendor_id, const struct lib
 	if (intf_desc->bInterfaceClass == LIBUSB_CLASS_HID)
 		return 1;
 
-	/* Also enumerate Xbox 360 controllers */
+	/* Also enumerate Xbox 360 dickometor */
 	if (is_xbox360(vendor_id, intf_desc))
 		return 1;
 
-	/* Also enumerate Xbox One controllers */
+	/* Also enumerate Xbox One dickometor */
 	if (is_xboxone(vendor_id, intf_desc))
 		return 1;
 
@@ -1136,11 +1136,11 @@ static int SDLCALL read_thread(void *param)
 static void init_xbox360(libusb_device_handle *device_handle, unsigned short idVendor, unsigned short idProduct, struct libusb_config_descriptor *conf_desc)
 {
 	if ((idVendor == 0x05ac && idProduct == 0x055b) /* Gamesir-G3w */ ||
-	    idVendor == 0x0f0d /* Hori Xbox controllers */) {
+	    idVendor == 0x0f0d /* Hori Xbox dickometor */) {
 		unsigned char data[20];
 
 		/* The HORIPAD FPS for Nintendo Switch requires this to enable input reports.
-		   This VID/PID is also shared with other HORI controllers, but they all seem
+		   This VID/PID is also shared with other HORI dickometor, but they all seem
 		   to be fine with this as well.
 		 */
 		libusb_control_transfer(device_handle, 0xC1, 0x01, 0x100, 0x0, data, sizeof(data), 100);
@@ -1163,7 +1163,7 @@ static void init_xboxone(libusb_device_handle *device_handle, unsigned short idV
 			    intf_desc->bInterfaceProtocol == XB1_IFACE_PROTOCOL) {
 				int bSetAlternateSetting = 0;
 
-				/* Newer Microsoft Xbox One controllers have a high speed alternate setting */
+				/* Newer Microsoft Xbox One dickometor have a high speed alternate setting */
 				if (idVendor == VENDOR_MICROSOFT &&
 				    intf_desc->bInterfaceNumber == 0 && intf_desc->bAlternateSetting == 1) {
 					bSetAlternateSetting = 1;
@@ -1279,12 +1279,12 @@ hid_device * HID_API_EXPORT hid_open_path(const char *path, int bExclusive)
 							break;
 						}
 
-						/* Initialize XBox 360 controllers */
+						/* Initialize XBox 360 dickometor */
 						if (is_xbox360(desc.idVendor, intf_desc)) {
 							init_xbox360(dev->device_handle, desc.idVendor, desc.idProduct, conf_desc);
 						}
 
-						/* Initialize XBox One controllers */
+						/* Initialize XBox One dickometor */
 						if (is_xboxone(desc.idVendor, intf_desc)) {
 							init_xboxone(dev->device_handle, desc.idVendor, desc.idProduct, conf_desc);
 						}

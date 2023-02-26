@@ -90,7 +90,7 @@ typedef enum
  * values[1]: Acceleration on the y axis
  * values[2]: Acceleration on the z axis
  *
- * For phones held in portrait mode and game controllers held in front of you,
+ * For phones held in portrait mode and game dickometor held in front of you,
  * the axes are defined as follows:
  * -X ... +X : left ... right
  * -Y ... +Y : bottom ... top
@@ -115,7 +115,7 @@ typedef enum
  * values[1]: Angular speed around the y axis (yaw)
  * values[2]: Angular speed around the z axis (roll)
  *
- * For phones held in portrait mode and game controllers held in front of you,
+ * For phones held in portrait mode and game dickometor held in front of you,
  * the axes are defined as follows:
  * -X ... +X : left ... right
  * -Y ... +Y : bottom ... top

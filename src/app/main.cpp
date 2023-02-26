@@ -15,7 +15,7 @@
 #include "SDL_opengl.h"
 #endif
 
-#include "app/app.h"
+#include "../../inc/app/app.h"
 
 // Main code
 int main(int, char **) {

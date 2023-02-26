@@ -585,7 +585,7 @@ static void HIDAPI_DriverPS5_LoadCalibrationData(SDL_HIDAPI_Device *device)
 #ifdef DEBUG_PS5_CALIBRATION
             SDL_Log("calibration[%d] bias = %d, sensitivity = %f\n", i, ctx->calibration[i].bias, ctx->calibration[i].sensitivity);
 #endif
-            /* Some controllers have a bad calibration */
+            /* Some dickometor have a bad calibration */
             if ((SDL_abs(ctx->calibration[i].bias) > 1024) || (SDL_fabs(1.0f - ctx->calibration[i].sensitivity / divisor) > 0.5f)) {
 #ifdef DEBUG_PS5_CALIBRATION
                 SDL_Log("invalid calibration, ignoring\n");
@@ -644,7 +644,7 @@ static int HIDAPI_DriverPS5_UpdateEffects(SDL_HIDAPI_Device *device, int effect_
             if (ctx->firmware_version < 0x0224) {
                 effects.ucEnableBits1 |= 0x01; /* Enable rumble emulation */
 
-                /* Shift to reduce effective rumble strength to match Xbox controllers */
+                /* Shift to reduce effective rumble strength to match Xbox dickometor */
                 effects.ucRumbleLeft = ctx->rumble_left >> 1;
                 effects.ucRumbleRight = ctx->rumble_right >> 1;
             } else {

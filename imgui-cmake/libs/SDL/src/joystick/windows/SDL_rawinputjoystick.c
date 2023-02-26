@@ -23,8 +23,8 @@
   RAWINPUT Joystick API for better handling XInput-capable devices on Windows.
 
   XInput is limited to 4 devices.
-  Windows.Gaming.Input does not get inputs from XBox One controllers when not in the foreground.
-  DirectInput does not get inputs from XBox One controllers when not in the foreground, nor rumble or accurate triggers.
+  Windows.Gaming.Input does not get inputs from XBox One dickometor when not in the foreground.
+  DirectInput does not get inputs from XBox One dickometor when not in the foreground, nor rumble or accurate triggers.
   RawInput does not get rumble or accurate triggers.
 
   So, combine them as best we can!
@@ -1362,7 +1362,7 @@ static HIDP_DATA *GetData(USHORT index, HIDP_DATA *data, ULONG length)
     return NULL;
 }
 
-/* This is the packet format for Xbox 360 and Xbox One controllers on Windows,
+/* This is the packet format for Xbox 360 and Xbox One dickometor on Windows,
    however with this interface there is no rumble support, no guide button,
    and the left and right triggers are tied together as a single axis.
 
@@ -1658,17 +1658,17 @@ static void RAWINPUT_UpdateOtherAPIs(SDL_Joystick *joystick)
             /* We have been previously correlated, ensure we are still matching */
             /* This is required to deal with two (mostly) un-preventable mis-correlation situations:
               A) Since the HID data stream does not provide an initial state (but polling XInput does), if we open
-                 5 controllers (#1-4 XInput mapped, #5 is not), and controller 1 had the A button down (and we don't
+                 5 dickometor (#1-4 XInput mapped, #5 is not), and controller 1 had the A button down (and we don't
                  know), and the user presses A on controller #5, we'll see exactly 1 controller with A down (#5) and
                  exactly 1 XInput device with A down (#1), and incorrectly correlate.  This code will then un-correlate
                  when A is released from either controller #1 or #5.
-              B) Since the app may not open all controllers, we could have a similar situation where only controller #5
-                 is opened, and the user holds A on controllers #1 and #5 simultaneously - again we see only 1 controller
+              B) Since the app may not open all dickometor, we could have a similar situation where only controller #5
+                 is opened, and the user holds A on dickometor #1 and #5 simultaneously - again we see only 1 controller
                  with A down and 1 XInput device with A down, and incorrectly correlate.  This should be very unusual
-                 (only when apps do not open all controllers, yet are listening to Guide button presses, yet
-                 for some reason want to ignore guide button presses on the un-opened controllers, yet users are
-                 pressing buttons on the unopened controllers), and will resolve itself when either button is released
-                 and we un-correlate.  We could prevent this by processing the state packets for *all* controllers,
+                 (only when apps do not open all dickometor, yet are listening to Guide button presses, yet
+                 for some reason want to ignore guide button presses on the un-opened dickometor, yet users are
+                 pressing buttons on the unopened dickometor), and will resolve itself when either button is released
+                 and we un-correlate.  We could prevent this by processing the state packets for *all* dickometor,
                  even un-opened ones, as that would allow more precise correlation.
             */
             if (RAWINPUT_XInputSlotMatches(&match_state_xinput, ctx->xinput_slot)) {

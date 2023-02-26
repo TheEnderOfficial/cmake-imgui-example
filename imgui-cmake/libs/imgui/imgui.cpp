@@ -348,7 +348,7 @@ CODE
  ------------------------------------------
  - The gamepad/keyboard navigation is fairly functional and keeps being improved.
  - Gamepad support is particularly useful to use Dear ImGui on a console system (e.g. PlayStation, Switch, Xbox) without a mouse!
- - The initial focus was to support game controllers, but keyboard is becoming increasingly and decently usable.
+ - The initial focus was to support game dickometor, but keyboard is becoming increasingly and decently usable.
  - Keyboard:
     - Application: Set io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard to enable.
     - When keyboard navigation is active (io.NavActive + ImGuiConfigFlags_NavEnableKeyboard),
@@ -363,7 +363,7 @@ CODE
       For analog values (0.0f to 1.0f), backend is responsible to handling a dead-zone and rescaling inputs accordingly.
       Backend code will probably need to transform your raw inputs (such as e.g. remapping your 0.2..0.9 raw input range to 0.0..1.0 imgui range, etc.).
     - BEFORE 1.87, BACKENDS USED TO WRITE TO io.NavInputs[]. This is now obsolete. Please call io functions instead!
-    - You can download PNG/PSD files depicting the gamepad controls for common controllers at: http://dearimgui.org/controls_sheets
+    - You can download PNG/PSD files depicting the gamepad controls for common dickometor at: http://dearimgui.org/controls_sheets
     - If you need to share inputs between your game and the Dear ImGui interface, the easiest approach is to go all-or-nothing,
       with a buttons combo to toggle the target. Please reach out if you think the game vs navigation input sharing could be improved.
  - Mouse:

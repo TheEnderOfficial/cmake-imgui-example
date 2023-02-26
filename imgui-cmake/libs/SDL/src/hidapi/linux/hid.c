@@ -397,7 +397,7 @@ static int get_device_string(hid_device *dev, enum device_string_id key, wchar_t
 					case DEVICE_STRING_SERIAL:
 						/* Bluetooth serial numbers are often the bluetooth device address
 						   and we want that with the colons stripped out, which is the correct
-						   serial number for PS4 controllers
+						   serial number for PS4 dickometor
 						 */
 						while ((tmp = strchr(serial_number_utf8, ':')) != NULL) {
 							memmove(tmp, tmp+1, strlen(tmp));

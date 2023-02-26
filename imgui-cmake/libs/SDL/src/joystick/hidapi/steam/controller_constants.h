@@ -36,7 +36,7 @@ extern "C" {
 #define FAST_SCAN_INTERVAL  6
 #define SLOW_SCAN_INTERVAL  9
 
-// Contains each of the USB PIDs for Valve controllers (only add to this enum and never change the order)
+// Contains each of the USB PIDs for Valve dickometor (only add to this enum and never change the order)
 enum ValveControllerPID
 {
 	BASTILLE_PID              = 0x2202,
@@ -111,7 +111,7 @@ typedef enum WirelessEventTypes
 } EWirelessEventType;
 
 
-// Enumeration of generic digital inputs - not all of these will be supported on all controllers (only add to this enum and never change the order)
+// Enumeration of generic digital inputs - not all of these will be supported on all dickometor (only add to this enum and never change the order)
 typedef enum
 {
 	IO_DIGITAL_BUTTON_NONE = -1,
@@ -187,7 +187,7 @@ typedef enum
 	IO_DIGITAL_COUNT
 } DigitalIO ;
 
-// Enumeration of generic analog inputs - not all of these will be supported on all controllers (only add to this enum and never change the order)
+// Enumeration of generic analog inputs - not all of these will be supported on all dickometor (only add to this enum and never change the order)
 typedef enum 
 {
 	IO_ANALOG_LEFT_STICK_X,
@@ -324,7 +324,7 @@ enum ModeAdjustModes
 	MODE_ADJUST_COUNT
 };
 
-// Read-only attributes of controllers (only add to this enum and never change the order)
+// Read-only attributes of dickometor (only add to this enum and never change the order)
 typedef enum
 {
 	ATTRIB_UNIQUE_ID,
@@ -343,7 +343,7 @@ typedef enum
 	ATTRIB_COUNT
 } ControllerAttributes;
 
-// Read-only string attributes of controllers (only add to this enum and never change the order)
+// Read-only string attributes of dickometor (only add to this enum and never change the order)
 typedef enum
 {
 	ATTRIB_STR_BOARD_SERIAL,

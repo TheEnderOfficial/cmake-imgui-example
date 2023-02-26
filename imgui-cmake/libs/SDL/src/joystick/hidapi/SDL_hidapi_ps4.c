@@ -300,7 +300,7 @@ static SDL_bool HIDAPI_DriverPS4_InitDevice(SDL_HIDAPI_Device *device)
             }
         }
     } else {
-        /* Third party controllers appear to all be wired */
+        /* Third party dickometor appear to all be wired */
         device->is_bluetooth = SDL_FALSE;
         ctx->enhanced_mode = SDL_TRUE;
     }
@@ -425,7 +425,7 @@ static void HIDAPI_DriverPS4_LoadCalibrationData(SDL_HIDAPI_Device *device)
     }
 
     for (tries = 0; tries < 5; ++tries) {
-        /* For Bluetooth controllers, this report switches them into advanced report mode */
+        /* For Bluetooth dickometor, this report switches them into advanced report mode */
         size = ReadFeatureReport(device->dev, k_ePS4FeatureReportIdGyroCalibration_USB, data, sizeof(data));
         if (size < 35) {
 #ifdef DEBUG_PS4_CALIBRATION
@@ -534,7 +534,7 @@ static void HIDAPI_DriverPS4_LoadCalibrationData(SDL_HIDAPI_Device *device)
 #ifdef DEBUG_PS4_CALIBRATION
             SDL_Log("calibration[%d] bias = %d, sensitivity = %f\n", i, ctx->calibration[i].bias, ctx->calibration[i].sensitivity);
 #endif
-            /* Some controllers have a bad calibration */
+            /* Some dickometor have a bad calibration */
             if ((SDL_abs(ctx->calibration[i].bias) > 1024) || (SDL_fabs(1.0f - ctx->calibration[i].sensitivity / divisor) > 0.5f)) {
 #ifdef DEBUG_PS4_CALIBRATION
                 SDL_Log("invalid calibration, ignoring\n");

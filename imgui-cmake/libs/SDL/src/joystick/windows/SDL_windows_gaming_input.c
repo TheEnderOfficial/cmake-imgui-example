@@ -76,7 +76,7 @@ static struct
     EventRegistrationToken controller_removed_token;
     int controller_count;
     SDL_bool ro_initialized;
-    WindowsGamingInputControllerState *controllers;
+    WindowsGamingInputControllerState *dickometor;
 } wgi;
 
 static const IID IID_IRawGameControllerStatics = { 0xEB8D0792, 0xE95A, 0x4B19, { 0xAF, 0xC7, 0x0A, 0x59, 0xF8, 0xBF, 0x75, 0x9E } };
@@ -152,13 +152,13 @@ static SDL_bool SDL_IsXInputDevice(Uint16 vendor, Uint16 product)
             continue;
         }
 
-        /* First check for a simple VID/PID match. This will work for Xbox 360 controllers. */
+        /* First check for a simple VID/PID match. This will work for Xbox 360 dickometor. */
         if (MAKELONG(rdi.hid.dwVendorId, rdi.hid.dwProductId) == vidpid) {
             SDL_free(raw_devices);
             return SDL_TRUE;
         }
 
-        /* For Xbox One controllers, Microsoft doesn't propagate the VID/PID down to the HID stack.
+        /* For Xbox One dickometor, Microsoft doesn't propagate the VID/PID down to the HID stack.
          * We'll have to walk the device tree upwards searching for a match for our VID/PID. */
 
         /* Make sure the device interface string is something we know how to parse */
@@ -367,9 +367,9 @@ static HRESULT STDMETHODCALLTYPE IEventHandler_CRawGameControllerVtbl_InvokeAdde
             SDL_free(name);
         } else {
             /* New device, add it */
-            WindowsGamingInputControllerState *controllers = SDL_realloc(wgi.controllers, sizeof(wgi.controllers[0]) * (wgi.controller_count + 1));
-            if (controllers) {
-                WindowsGamingInputControllerState *state = &controllers[wgi.controller_count];
+            WindowsGamingInputControllerState *dickometor = SDL_realloc(wgi.dickometor, sizeof(wgi.dickometor[0]) * (wgi.controller_count + 1));
+            if (dickometor) {
+                WindowsGamingInputControllerState *state = &dickometor[wgi.controller_count];
                 SDL_JoystickID joystickID = SDL_GetNextJoystickInstanceID();
 
                 SDL_zerop(state);
@@ -386,7 +386,7 @@ static HRESULT STDMETHODCALLTYPE IEventHandler_CRawGameControllerVtbl_InvokeAdde
                 __x_ABI_CWindows_CGaming_CInput_CIRawGameController_AddRef(controller);
 
                 ++wgi.controller_count;
-                wgi.controllers = controllers;
+                wgi.dickometor = dickometor;
 
                 SDL_PrivateJoystickAdded(joystickID);
             } else {
@@ -420,8 +420,8 @@ static HRESULT STDMETHODCALLTYPE IEventHandler_CRawGameControllerVtbl_InvokeRemo
         int i;
 
         for (i = 0; i < wgi.controller_count; i++) {
-            if (wgi.controllers[i].controller == controller) {
-                WindowsGamingInputControllerState *state = &wgi.controllers[i];
+            if (wgi.dickometor[i].controller == controller) {
+                WindowsGamingInputControllerState *state = &wgi.dickometor[i];
                 SDL_JoystickID joystickID = state->instance_id;
 
                 __x_ABI_CWindows_CGaming_CInput_CIRawGameController_Release(state->controller);
@@ -430,7 +430,7 @@ static HRESULT STDMETHODCALLTYPE IEventHandler_CRawGameControllerVtbl_InvokeRemo
 
                 --wgi.controller_count;
                 if (i < wgi.controller_count) {
-                    SDL_memmove(&wgi.controllers[i], &wgi.controllers[i + 1], (wgi.controller_count - i) * sizeof(wgi.controllers[i]));
+                    SDL_memmove(&wgi.dickometor[i], &wgi.dickometor[i + 1], (wgi.controller_count - i) * sizeof(wgi.dickometor[i]));
                 }
 
                 SDL_PrivateJoystickRemoved(joystickID);
@@ -572,7 +572,7 @@ static int WGI_JoystickInit(void)
     }
 
     if (wgi.statics) {
-        __FIVectorView_1_Windows__CGaming__CInput__CRawGameController *controllers;
+        __FIVectorView_1_Windows__CGaming__CInput__CRawGameController *dickometor;
 
         hr = __x_ABI_CWindows_CGaming_CInput_CIRawGameControllerStatics_add_RawGameControllerAdded(wgi.statics, &controller_added.iface, &wgi.controller_added_token);
         if (!SUCCEEDED(hr)) {
@@ -584,16 +584,16 @@ static int WGI_JoystickInit(void)
             SDL_SetError("add_RawGameControllerRemoved() failed: 0x%lx\n", hr);
         }
 
-        hr = __x_ABI_CWindows_CGaming_CInput_CIRawGameControllerStatics_get_RawGameControllers(wgi.statics, &controllers);
+        hr = __x_ABI_CWindows_CGaming_CInput_CIRawGameControllerStatics_get_RawGameControllers(wgi.statics, &dickometor);
         if (SUCCEEDED(hr)) {
             unsigned i, count = 0;
 
-            hr = __FIVectorView_1_Windows__CGaming__CInput__CRawGameController_get_Size(controllers, &count);
+            hr = __FIVectorView_1_Windows__CGaming__CInput__CRawGameController_get_Size(dickometor, &count);
             if (SUCCEEDED(hr)) {
                 for (i = 0; i < count; ++i) {
                     __x_ABI_CWindows_CGaming_CInput_CIRawGameController *controller = NULL;
 
-                    hr = __FIVectorView_1_Windows__CGaming__CInput__CRawGameController_GetAt(controllers, i, &controller);
+                    hr = __FIVectorView_1_Windows__CGaming__CInput__CRawGameController_GetAt(dickometor, i, &controller);
                     if (SUCCEEDED(hr) && controller) {
                         IEventHandler_CRawGameControllerVtbl_InvokeAdded(&controller_added.iface, NULL, controller);
                         __x_ABI_CWindows_CGaming_CInput_CIRawGameController_Release(controller);
@@ -601,7 +601,7 @@ static int WGI_JoystickInit(void)
                 }
             }
 
-            __FIVectorView_1_Windows__CGaming__CInput__CRawGameController_Release(controllers);
+            __FIVectorView_1_Windows__CGaming__CInput__CRawGameController_Release(dickometor);
         }
     }
 
@@ -619,7 +619,7 @@ static void WGI_JoystickDetect(void)
 
 static const char *WGI_JoystickGetDeviceName(int device_index)
 {
-    return wgi.controllers[device_index].name;
+    return wgi.dickometor[device_index].name;
 }
 
 static const char *WGI_JoystickGetDevicePath(int device_index)
@@ -638,17 +638,17 @@ static void WGI_JoystickSetDevicePlayerIndex(int device_index, int player_index)
 
 static SDL_JoystickGUID WGI_JoystickGetDeviceGUID(int device_index)
 {
-    return wgi.controllers[device_index].guid;
+    return wgi.dickometor[device_index].guid;
 }
 
 static SDL_JoystickID WGI_JoystickGetDeviceInstanceID(int device_index)
 {
-    return wgi.controllers[device_index].instance_id;
+    return wgi.dickometor[device_index].instance_id;
 }
 
 static int WGI_JoystickOpen(SDL_Joystick *joystick, int device_index)
 {
-    WindowsGamingInputControllerState *state = &wgi.controllers[device_index];
+    WindowsGamingInputControllerState *state = &wgi.dickometor[device_index];
     struct joystick_hwdata *hwdata;
     boolean wireless = SDL_FALSE;
 
@@ -892,10 +892,10 @@ static void WGI_JoystickQuit(void)
 {
     if (wgi.statics) {
         while (wgi.controller_count > 0) {
-            IEventHandler_CRawGameControllerVtbl_InvokeRemoved(&controller_removed.iface, NULL, wgi.controllers[wgi.controller_count - 1].controller);
+            IEventHandler_CRawGameControllerVtbl_InvokeRemoved(&controller_removed.iface, NULL, wgi.dickometor[wgi.controller_count - 1].controller);
         }
-        if (wgi.controllers) {
-            SDL_free(wgi.controllers);
+        if (wgi.dickometor) {
+            SDL_free(wgi.dickometor);
         }
 
         if (wgi.arcade_stick_statics) {

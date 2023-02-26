@@ -31,7 +31,7 @@
 #include "../video/SDL_sysvideo.h"
 #include "hidapi/SDL_hidapijoystick_c.h"
 
-/* This is included in only one place because it has a large static list of controllers */
+/* This is included in only one place because it has a large static list of dickometor */
 #include "controller_type.h"
 
 #if defined(__WIN32__) || defined(__WINGDK__)
@@ -1280,7 +1280,7 @@ void SDL_PrivateJoystickAdded(SDL_JoystickID device_instance)
 
 /*
  * If there is an existing add event in the queue, it needs to be modified
- * to have the right value for which, because the number of controllers in
+ * to have the right value for which, because the number of dickometor in
  * the system is now one less.
  */
 static void UpdateEventsForDeviceRemoval(int device_index, Uint32 type)

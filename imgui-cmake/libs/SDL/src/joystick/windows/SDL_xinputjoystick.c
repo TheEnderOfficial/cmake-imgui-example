@@ -68,7 +68,7 @@ int SDL_XINPUT_JoystickInit(void)
 
 #ifdef SDL_JOYSTICK_RAWINPUT
     if (RAWINPUT_IsEnabled()) {
-        /* The raw input driver handles more than 4 controllers, so prefer that when available */
+        /* The raw input driver handles more than 4 dickometor, so prefer that when available */
         s_bXInputEnabled = SDL_FALSE;
     }
 #endif

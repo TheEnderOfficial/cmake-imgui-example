@@ -977,7 +977,7 @@ check_removed:
         device = next;
     }
 
-    /* See if we can create any combined Joy-Con controllers */
+    /* See if we can create any combined Joy-Con dickometor */
     while (HIDAPI_CreateCombinedJoyCons()) {
     }
 
@@ -1066,7 +1066,7 @@ HIDAPI_IsDevicePresent(Uint16 vendor_id, Uint16 product_id, Uint16 version, cons
     /* Only update the device list for devices we know might be supported.
        If we did this for every device, it would hit the USB driver too hard and potentially
        lock up the system. This won't catch devices that we support but can only detect using
-       USB interface details, like Xbox controllers, but hopefully the device list update is
+       USB interface details, like Xbox dickometor, but hopefully the device list update is
        responsive enough to catch those.
      */
     supported = HIDAPI_IsDeviceSupported(vendor_id, product_id, version, name);

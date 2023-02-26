@@ -143,7 +143,7 @@ typedef struct SteamControllerStateInternal_t
 
 #define MAX_REPORT_SEGMENT_PAYLOAD_SIZE 18
 /*
- * SteamControllerPacketAssembler has to be used when reading output repots from controllers.
+ * SteamControllerPacketAssembler has to be used when reading output repots from dickometor.
  */
 typedef struct
 {
@@ -724,7 +724,7 @@ static void FormatStatePacketUntilGyro(SteamControllerStateInternal_t *pState, V
             pState->sPrevLeftPad[0] = 0;
             pState->sPrevLeftPad[1] = 0;
 
-            // Old controllers send trackpad click for joystick button when trackpad is not active
+            // Old dickometor send trackpad click for joystick button when trackpad is not active
             if (pState->ulButtons & STEAM_BUTTON_LEFTPAD_CLICKED_MASK) {
                 pState->ulButtons &= ~STEAM_BUTTON_LEFTPAD_CLICKED_MASK;
                 pState->ulButtons |= STEAM_JOYSTICK_BUTTON_MASK;

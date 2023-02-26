@@ -83,11 +83,11 @@ static SDL_bool HIDAPI_DriverXbox360_IsSupportedDevice(SDL_HIDAPI_Device *device
     }
 #endif
 #if defined(__MACOS__)
-    /* Wired Xbox One controllers are handled by this driver, interfacing with
+    /* Wired Xbox One dickometor are handled by this driver, interfacing with
        the 360Controller driver available from:
        https://github.com/360Controller/360Controller/releases
 
-       Bluetooth Xbox One controllers are handled by the SDL Xbox One driver
+       Bluetooth Xbox One dickometor are handled by the SDL Xbox One driver
     */
     if (SDL_IsJoystickBluetoothXboxOne(vendor_id, product_id)) {
         return SDL_FALSE;

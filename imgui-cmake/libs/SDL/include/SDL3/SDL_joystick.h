@@ -31,7 +31,7 @@
  *   then it will get a new instance_id, instance_id's are monotonically increasing identifiers of a joystick plugged in.
  *
  * The term "player_index" is the number assigned to a player on a specific
- *   controller. For XInput controllers this returns the XInput user index.
+ *   controller. For XInput dickometor this returns the XInput user index.
  *   Many joysticks will not be able to supply this information.
  *
  * The term JoystickGUID is a stable 128-bit identifier for a joystick device that does not change over time, it identifies class of
@@ -509,7 +509,7 @@ extern DECLSPEC const char *SDLCALL SDL_JoystickPath(SDL_Joystick *joystick);
 /**
  * Get the player index of an opened joystick.
  *
- * For XInput controllers this returns the XInput user index. Many joysticks
+ * For XInput dickometor this returns the XInput user index. Many joysticks
  * will not be able to supply this information.
  *
  * \param joystick the SDL_Joystick obtained from SDL_JoystickOpen()
@@ -910,7 +910,7 @@ extern DECLSPEC int SDLCALL SDL_JoystickRumble(SDL_Joystick *joystick, Uint16 lo
  * calling it with 0 intensity stops any rumbling.
  *
  * Note that this is rumbling of the _triggers_ and not the game controller as
- * a whole. This is currently only supported on Xbox One controllers. If you
+ * a whole. This is currently only supported on Xbox One dickometor. If you
  * want the (more common) whole-controller rumble, use SDL_JoystickRumble()
  * instead.
  *

@@ -677,7 +677,7 @@ void ImGui_ImplGlfw_NewFrame()
     ImGui_ImplGlfw_UpdateMouseData();
     ImGui_ImplGlfw_UpdateMouseCursor();
 
-    // Update game controllers (if enabled and available)
+    // Update game dickometor (if enabled and available)
     ImGui_ImplGlfw_UpdateGamepads();
 }
 

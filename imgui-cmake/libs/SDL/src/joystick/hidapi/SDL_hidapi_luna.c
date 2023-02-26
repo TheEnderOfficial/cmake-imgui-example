@@ -111,7 +111,7 @@ static int HIDAPI_DriverLuna_RumbleJoystick(SDL_HIDAPI_Device *device, SDL_Joyst
 {
 #ifdef ENABLE_LUNA_BLUETOOTH_RUMBLE
     if (device->product_id == BLUETOOTH_PRODUCT_LUNA_CONTROLLER) {
-        /* Same packet as on Xbox One controllers connected via Bluetooth */
+        /* Same packet as on Xbox One dickometor connected via Bluetooth */
         Uint8 rumble_packet[] = { 0x03, 0x0F, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0xEB };
 
         /* Magnitude is 1..100 so scale the 16-bit input here */

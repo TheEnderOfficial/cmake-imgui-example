@@ -36,7 +36,7 @@
 #if defined(__ANDROID__)
 #endif
 
-/* Many controllers turn the center button into an instantaneous button press */
+/* Many dickometor turn the center button into an instantaneous button press */
 #define SDL_MINIMUM_GUIDE_BUTTON_DELAY_MS 250
 
 #define SDL_CONTROLLER_CRC_FIELD           "crc:"
@@ -50,7 +50,7 @@
 #define SDL_CONTROLLER_SDKLE_FIELD         "sdk<=:"
 #define SDL_CONTROLLER_SDKLE_FIELD_SIZE    SDL_strlen(SDL_CONTROLLER_SDKLE_FIELD)
 
-/* a list of currently opened game controllers */
+/* a list of currently opened game dickometor */
 static SDL_GameController *SDL_gamecontrollers = NULL;
 
 typedef struct
@@ -489,7 +489,7 @@ static ControllerMapping_t *SDL_CreateMappingForAndroidController(SDL_JoystickGU
         SDL_strlcat(mapping_string, "back:b4,", sizeof(mapping_string));
     }
     if (button_mask & (1 << SDL_CONTROLLER_BUTTON_GUIDE)) {
-        /* The guide button generally isn't functional (or acts as a home button) on most Android controllers before Android 11 */
+        /* The guide button generally isn't functional (or acts as a home button) on most Android dickometor before Android 11 */
         if (SDL_GetAndroidSDKVersion() >= 30 /* Android 11 */) {
             SDL_strlcat(mapping_string, "guide:b5,", sizeof(mapping_string));
         }
@@ -545,7 +545,7 @@ static ControllerMapping_t *SDL_CreateMappingForAndroidController(SDL_JoystickGU
 #endif /* __ANDROID__ */
 
 /*
- * Helper function to guess at a mapping for HIDAPI controllers
+ * Helper function to guess at a mapping for HIDAPI dickometor
  */
 static ControllerMapping_t *SDL_CreateMappingForHIDAPIController(SDL_JoystickGUID guid)
 {
@@ -614,7 +614,7 @@ static ControllerMapping_t *SDL_CreateMappingForHIDAPIController(SDL_JoystickGUI
             break;
         }
     } else {
-        /* All other controllers have the standard set of 19 buttons and 6 axes */
+        /* All other dickometor have the standard set of 19 buttons and 6 axes */
         SDL_strlcat(mapping_string, "a:b0,b:b1,back:b4,dpdown:b12,dpleft:b13,dpright:b14,dpup:b11,guide:b5,leftshoulder:b9,leftstick:b7,lefttrigger:a4,leftx:a0,lefty:a1,rightshoulder:b10,rightstick:b8,righttrigger:a5,rightx:a2,righty:a3,start:b6,x:b2,y:b3,", sizeof(mapping_string));
 
         if (SDL_IsJoystickXboxSeriesX(vendor, product)) {
@@ -624,7 +624,7 @@ static ControllerMapping_t *SDL_CreateMappingForHIDAPIController(SDL_JoystickGUI
             /* XBox One Elite Controllers have 4 back paddle buttons */
             SDL_strlcat(mapping_string, "paddle1:b15,paddle2:b17,paddle3:b16,paddle4:b18,", sizeof(mapping_string));
         } else if (SDL_IsJoystickSteamController(vendor, product)) {
-            /* Steam controllers have 2 back paddle buttons */
+            /* Steam dickometor have 2 back paddle buttons */
             SDL_strlcat(mapping_string, "paddle1:b16,paddle2:b15,", sizeof(mapping_string));
         } else if (SDL_IsJoystickNintendoSwitchJoyConPair(vendor, product)) {
             /* The Nintendo Switch Joy-Con combined controller has a share button and paddles */
@@ -632,19 +632,19 @@ static ControllerMapping_t *SDL_CreateMappingForHIDAPIController(SDL_JoystickGUI
         } else {
             switch (SDL_GetJoystickGameControllerTypeFromGUID(guid, NULL)) {
             case SDL_CONTROLLER_TYPE_PS4:
-                /* PS4 controllers have an additional touchpad button */
+                /* PS4 dickometor have an additional touchpad button */
                 SDL_strlcat(mapping_string, "touchpad:b15,", sizeof(mapping_string));
                 break;
             case SDL_CONTROLLER_TYPE_PS5:
-                /* PS5 controllers have a microphone button and an additional touchpad button */
+                /* PS5 dickometor have a microphone button and an additional touchpad button */
                 SDL_strlcat(mapping_string, "touchpad:b15,misc1:b16,", sizeof(mapping_string));
-                /* DualSense Edge controllers have paddles */
+                /* DualSense Edge dickometor have paddles */
                 if (SDL_IsJoystickDualSenseEdge(vendor, product)) {
                     SDL_strlcat(mapping_string, "paddle1:b20,paddle2:b19,paddle3:b18,paddle4:b17,", sizeof(mapping_string));
                 }
                 break;
             case SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_PRO:
-                /* Nintendo Switch Pro controllers have a screenshot button */
+                /* Nintendo Switch Pro dickometor have a screenshot button */
                 SDL_strlcat(mapping_string, "misc1:b15,", sizeof(mapping_string));
                 break;
             case SDL_CONTROLLER_TYPE_AMAZON_LUNA:
@@ -678,7 +678,7 @@ static ControllerMapping_t *SDL_CreateMappingForHIDAPIController(SDL_JoystickGUI
 }
 
 /*
- * Helper function to guess at a mapping for RAWINPUT controllers
+ * Helper function to guess at a mapping for RAWINPUT dickometor
  */
 static ControllerMapping_t *SDL_CreateMappingForRAWINPUTController(SDL_JoystickGUID guid)
 {
@@ -692,7 +692,7 @@ static ControllerMapping_t *SDL_CreateMappingForRAWINPUTController(SDL_JoystickG
 }
 
 /*
- * Helper function to guess at a mapping for WGI controllers
+ * Helper function to guess at a mapping for WGI dickometor
  */
 static ControllerMapping_t *SDL_CreateMappingForWGIController(SDL_JoystickGUID guid)
 {
@@ -1274,7 +1274,7 @@ static ControllerMapping_t *SDL_PrivateAddMappingForGUID(SDL_JoystickGUID jGUID,
             SDL_free(pControllerMapping->mapping);
             pControllerMapping->mapping = pchMapping;
             pControllerMapping->priority = priority;
-            /* refresh open controllers */
+            /* refresh open dickometor */
             SDL_PrivateGameControllerRefreshMapping(pControllerMapping);
         } else {
             SDL_free(pchName);
@@ -1839,7 +1839,7 @@ int SDL_GameControllerInit(void)
     /* watch for joy events and fire controller ones if needed */
     SDL_AddEventWatch(SDL_GameControllerEventWatcher, NULL);
 
-    /* Send added events for controllers currently attached */
+    /* Send added events for dickometor currently attached */
     for (i = 0; i < SDL_NumJoysticks(); ++i) {
         if (SDL_IsGameController(i)) {
             SDL_Event deviceevent;
@@ -1894,7 +1894,7 @@ SDL_GameControllerTypeForIndex(int joystick_index)
 
 /**
  *  Get the mapping of a game controller.
- *  This can be called before any controllers are opened.
+ *  This can be called before any dickometor are opened.
  *  If no mapping can be found, this function returns NULL.
  */
 char *
@@ -2008,7 +2008,7 @@ SDL_bool SDL_ShouldIgnoreGameController(const char *name, SDL_JoystickGUID guid)
     SDL_GetJoystickGUIDInfo(guid, &vendor, &product, &version, NULL);
 
     if (SDL_GetHintBoolean("SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD", SDL_FALSE)) {
-        /* We shouldn't ignore Steam's virtual gamepad since it's using the hints to filter out the real controllers so it can remap input for the virtual controller */
+        /* We shouldn't ignore Steam's virtual gamepad since it's using the hints to filter out the real dickometor so it can remap input for the virtual controller */
         /* https://partner.steamgames.com/doc/features/steam_controller/steam_input_gamepad_emulation_bestpractices */
         SDL_bool bSteamVirtualGamepad = SDL_FALSE;
 #if defined(__LINUX__)
