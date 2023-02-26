@@ -14,10 +14,12 @@ namespace ApiService {
     struct ApiResponse {
         Json::Value jsonData;
         int httpCode;
+
     };
     class ApiService {
     public:
         static ApiResponse get(const char* url);
+        static ApiResponse post(const char* url, Json::Value body);
     };
 }
 #endif //APP_APISERVICE_H

@@ -17,6 +17,7 @@ namespace MyApp {
         bool is_user_calculated = false;
         char status[64];
         char version[64];
+        int statusHttpCode;
         bool isStatusLoaded = false;
     } state;
 
@@ -25,7 +26,14 @@ namespace MyApp {
             auto r = ApiService::ApiService::get(MyApp::config.GET_STATUS_URL);
             strcpy(state.status, r.jsonData["status"].asCString());
             strcpy(state.version, r.jsonData["version"].asCString());
+            state.statusHttpCode = r.httpCode;
             printf("Loaded data, status: %s, version: %s", state.status, state.version);
+
+            Json::Value x;
+            x["test"] = "zalupa chlena";
+
+            auto r2 = ApiService::ApiService::post("http://localhost:3000/test", x);
+            printf("%s", r2.jsonData.toStyledString().c_str());
 
             state.isStatusLoaded = true;
         }
@@ -35,14 +43,17 @@ namespace MyApp {
         ImGui::SetWindowSize(ImVec2((float)MyApp::config.width, (float)MyApp::config.height));
         ImGui::SetWindowPos(ImVec2(0, 0));
 
-        ImGui::Text("You are using:");
-        ImGui::Text("Dickometor Client %s", MyApp::config.version);
-        ImGui::Text("Dickometor Server %s", state.version);
-        ImGui::Separator();
+        if (state.statusHttpCode == -100) {
+            ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255,0,0,255));
+            ImGui::Text("Error: %s", state.status);
+            ImGui::PopStyleColor(1);
+            ImGui::End();
+            return;
+        }
 
         if (strcmp(MyApp::config.version, state.version) != 0) {
             ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255,255,0,255));
-            ImGui::Text("Warning: version of client and server not equal, please update");
+            ImGui::Text("Warning: version of client and server not equal, please update, (client %s, server %s)", MyApp::config.version, state.version);
             ImGui::PopStyleColor(1);
             ImGui::Separator();
         }
@@ -84,8 +95,6 @@ namespace MyApp {
                 }
             }
         }
-
-
 
         ImGui::End();
     }
