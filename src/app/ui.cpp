@@ -10,15 +10,25 @@
 
 
 namespace MyApp {
+    struct TopEntry {
+        int id;
+        char user_name[64];
+        int size;
+        bool valid = false;
+    };
+
     struct {
         char user_name[64] = "";
         char error[128] = "";
-        int user_dick;
+        int user_dick{};
         bool is_user_calculated = false;
-        char status[64];
-        char version[64];
-        int statusHttpCode;
+        char status[64]{};
+        char version[64]{};
+        int statusHttpCode{};
         bool isStatusLoaded = false;
+        TopEntry top[100]{};
+
+        int isPublished = 0;
     } state;
 
     void renderUI() {
@@ -29,11 +39,19 @@ namespace MyApp {
             state.statusHttpCode = r.httpCode;
             printf("Loaded data, status: %s, version: %s", state.status, state.version);
 
-            Json::Value x;
-            x["test"] = "zalupa chlena";
-
-            auto r2 = ApiService::ApiService::post("http://localhost:3000/test", x);
-            printf("%s", r2.jsonData.toStyledString().c_str());
+            // top
+            auto topR = ApiService::ApiService::get(MyApp::config.GET_TOP_URL);
+            std::vector<TopEntry> v = {};
+            for (Json::Value::ArrayIndex i = 0; i != topR.jsonData["top"].size(); i++)
+            {
+                TopEntry te = {};
+                strcpy(te.user_name, topR.jsonData["top"][i]["name"].asCString());
+                te.size = topR.jsonData["top"][i]["length"].asInt();
+                te.id = topR.jsonData["top"][i]["id"].asInt();
+                te.valid = true;
+                v.push_back(te);
+            }
+            std::copy(v.begin(), v.end(), state.top);
 
             state.isStatusLoaded = true;
         }
@@ -66,16 +84,36 @@ namespace MyApp {
         }
 
 
-        ImGui::Text("Enter your name!");
-        ImGui::InputText("Your name", state.user_name, 64);
+        if (!state.is_user_calculated) {
+            ImGui::Text("Enter your name!");
+            ImGui::InputText("Your name", state.user_name, 64);
 
-        ImGui::Separator();
+            ImGui::Separator();
+        }
 
         if (state.is_user_calculated) {
             ImGui::Text("%s dick size: %d cm", state.user_name, state.user_dick);
+            if (state.isPublished == 0 && ImGui::Button("Publish record")) {
+                Json::Value val;
+                val["name"] = state.user_name;
+                val["length"] = state.user_dick;
+                auto pR = ApiService::ApiService::post(MyApp::config.POST_RESULT_URL, val);
+                state.isPublished = true;
+                state.isStatusLoaded = false; // reloads top and status
+                state.isPublished = -1;
+            }
+            if (state.isPublished == -1) {
+                ImGui::Text("Your record is published.");
+                ImGui::SameLine();
+                if (ImGui::Button("Close")) {
+                    state.isPublished = 1;
+                }
+            }
             if (ImGui::Button("Reset")) {
                 state.is_user_calculated = false;
+                state.isPublished = 0;
             }
+
         }
         else {
             if (ImGui::Button("Calculate dick size")) {
@@ -94,6 +132,16 @@ namespace MyApp {
                     strcpy(state.error, "");
                 }
             }
+        }
+
+        // top
+        ImGui::Separator();
+        ImGui::Text("Top 5");
+        for (int i = 0; i <= 5; i++) {
+            auto te = state.top[i];
+
+            if (!te.valid) continue;
+            ImGui::Text("%d: %s - %d cm", i + 1, te.user_name, te.size);
         }
 
         ImGui::End();

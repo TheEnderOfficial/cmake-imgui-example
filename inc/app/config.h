@@ -12,6 +12,8 @@ namespace MyApp {
         const char* version = "dev";
 
         const char* GET_STATUS_URL = "http://localhost:3000/status";
+        const char* GET_TOP_URL = "http://localhost:3000/top";
+        const char* POST_RESULT_URL = "http://localhost:3000/result";
     } config;
 }
 #endif //APP_CONFIG_H

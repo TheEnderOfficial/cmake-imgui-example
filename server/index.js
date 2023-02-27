@@ -17,11 +17,17 @@ app.use(express.json());
 //         next();
 //     });
 // });
+//
+let results = [
+    {id: 1, name: "admin", length: 200}
+];
 
-app.get("/status", (req, res) => res.json({ status: "OK", version: "0.1" }))
-app.post("/test", (req, res) => {
-    console.log(req.body);
-    res.json({status: "OK"})
+app.get("/status", (req, res) => res.json({ status: "OK", version: "dev" }))
+app.post("/result", (req, res) => {
+    const {name, length} = req.body;
+    let lastId = results[results.length - 1].id
+    results.push({name, length, id: lastId + 1})
+    res.json({status: "OK", id: lastId + 1})
 })
-
+app.get("/top", (req, res) => res.json({top: results.sort(i => i.length).slice(0, 99)}))
 app.listen(PORT, () => console.log(`Launched at :${PORT}`))
